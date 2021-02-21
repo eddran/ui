@@ -1,0 +1,197 @@
+@import "src/assets/css/common";
+//
+// Button Text Type
+//
+
+@mixin button-plain-variant($color, $color-hover: color-yiq($color)) {
+  color: $color;
+  border-color: rgba($color, 0.4);
+  background-color: rgba($color, 0.05);
+
+  @include hover() {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  &:focus,
+  &.focus {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: rgba($color, 0.75);
+    background-color: rgba($color, 0.85);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: $white;
+    background-color: $color;
+    border-color: $color;
+
+    &:focus {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      @if $enable-shadows and $btn-active-box-shadow != none {
+        box-shadow: none;
+      } @else {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-plain-#{$color} {
+    @include button-plain-variant($value, $value);
+  }
+}
+.btn-plain-default {
+  border: 1px solid $gunmetal-4;
+  background-color: $white;
+  color: $gunmetal-20;
+  &:hover,
+  &:focus,
+  &:active,
+  &.focus,
+  &.disabled,
+  &:disabled,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: $gunmetal-20;
+    background-color: $gunmetal-1;
+    border: 1px solid $gunmetal-4;
+  }
+}
+
+//
+// Button Text Type
+//
+
+@mixin button-text-variant($color, $color-hover: color-yiq($color)) {
+  color: $color;
+  border-color: transparent;
+
+  @include hover() {
+    color: rgba($color, 0.85);
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+    border-color: transparent;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: rgba($color, 0.85);
+    background-color: transparent;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: rgba($color, 0.85);
+    background-color: transparent;
+    border-color: transparent;
+
+    &:focus {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      @if $enable-shadows and $btn-active-box-shadow != none {
+        box-shadow: none;
+      } @else {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-text-#{$color} {
+    @include button-text-variant($value, $value);
+  }
+}
+
+//Button Icon Type
+
+@mixin button-icon-variant($color, $color-hover: color-yiq($color)) {
+  color: $white;
+  background: $color;
+  padding: 0.75rem 0.75rem 0.625rem;
+
+  @include hover() {
+    color: $white;
+    background-color: rgba($color, 0.85);
+    border-color: rgba($color, 0.85);
+  }
+
+  &:focus,
+  &.focus {
+    border-color: rgba($color, 0.85);
+    background-color: rgba($color, 0.85);
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $white;
+    background-color: rgba($color, 0.85);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: $white;
+    background-color: rgba($color, 0.85);
+    border-color: rgba($color, 0.85);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-icon-#{$color} {
+    @include button-icon-variant($value, $value);
+  }
+}
+
+.btn {
+  i {
+    font-size: $font-size-base;
+  }
+}
+
+//
+// Button Sizes
+//
+
+.btn-xs {
+  @include button-size($btn-padding-y-xs, $btn-padding-x-xs, $btn-font-size-xs, $btn-line-height-xs, $btn-border-radius);
+  letter-spacing: 0.04rem;
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+  letter-spacing: 0.04rem;
+}
+
+.btn-md {
+  font-weight: $font-weight-bold;
+  @include button-size($btn-padding-y-md, $btn-padding-x-md, $btn-font-size-md, $btn-line-height-md, $btn-border-radius);
+}
+
+.btn-lg {
+  font-weight: $font-weight-bold;
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.btn-xl {
+  @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $btn-font-size-xl, $btn-line-height-xl, $btn-border-radius);
+  font-weight: $font-weight-bold;
+}
