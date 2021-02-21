@@ -8,11 +8,10 @@
   "scripts": {
     "storybook": "start-storybook -p 6007",
     "build-storybook": "build-storybook",
-    "buildd": "react-scripts build",
-    "builddd": "tsc -p tsconfig.build.json",
+    "build": "rimraf ./build && rollup -c",
+    "prepare": "yarn build",
     "rol": "rollup -c",
-    "eject": "react-scripts eject",
-    "build": "rimraf ./build && rollup -c"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
