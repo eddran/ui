@@ -1,11 +1,9 @@
 {
   "name": "storade-ui",
   "version": "1.0.0",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
-  "files": [
-    "build"
-  ],
+  "main": "./build/index.js",
+  "module": "./build/index.es.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "storybook": "start-storybook -p 6007",
@@ -14,7 +12,7 @@
     "builddd": "tsc -p tsconfig.build.json",
     "rol": "rollup -c",
     "eject": "react-scripts eject",
-    "build": "rollup -c"
+    "build": "rimraf ./build && rollup -c"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
@@ -48,11 +46,19 @@
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
     "react-scripts": "^4.0.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.39.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-scss": "^2.6.1",
+    "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
